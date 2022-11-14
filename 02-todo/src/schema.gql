@@ -1,0 +1,51 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+""" Todo Quick Aggregations"""
+type AggregationsType {
+  total: Int!
+  pending: Int!
+  completed: Int!
+  totalTodosCompleted: Int! @deprecated(reason: "Use total instead")
+}
+
+type Todo {
+  id: Int!
+  description: String!
+  done: Boolean!
+}
+
+type Query {
+  """Returns a string"""
+  hello: String!
+  randomNumber: Float!
+
+  """From 0 to argument To default(6)"""
+  randomFromZeroTo(to: Int!): Int!
+  todos(status: Boolean): [Todo!]!
+  todoById(id: Float!): Todo!
+  totalTodos: Int!
+  completedTodos: Int!
+  pendingTodos: Int!
+  aggregations: AggregationsType!
+}
+
+type Mutation {
+  createTodo(createTodoInput: CreateTodoInput!): Todo!
+  updateTodo(updateTodoInput: UpdateTodoInput!): Todo!
+  deleteTodo(id: Int!): Boolean!
+}
+
+input CreateTodoInput {
+  """Description of the todo"""
+  description: String!
+}
+
+input UpdateTodoInput {
+  id: Int!
+
+  """Description of the todo"""
+  description: String
+  done: Boolean
+}
